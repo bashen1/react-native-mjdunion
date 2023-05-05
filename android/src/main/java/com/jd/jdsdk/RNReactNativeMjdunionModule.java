@@ -71,10 +71,10 @@ public class RNReactNativeMjdunionModule extends ReactContextBaseJavaModule {
                             p.resolve(map);
                         }
 
-
-                        public void onFailure() {
+                        @Override
+                        public void onFailure(String s) {
                             WritableMap map = Arguments.createMap();
-                            map.putString("message", "Kepler asyncInitSdk 授权失败，请检查lib 工程资源引用；包名,签名证书是否和注册一致");
+                            map.putString("message", s);
                             map.putString("code", Integer.toString(1));
                             p.resolve(map);
                         }
@@ -85,6 +85,46 @@ public class RNReactNativeMjdunionModule extends ReactContextBaseJavaModule {
             map.putString("code", Integer.toString(1));
             p.resolve(map);
         }
+    }
+
+    /**
+     * 通过sku唤起京喜特价APP
+     * ----传入itemID，isOpenByH5，processColor，backTagID，openType，customParams
+     */
+    @ReactMethod
+    public void showJXLiteItemByUrl(final ReadableMap data, final Promise p) {
+        if (initKepler_success != 1) {
+            WritableMap map = Arguments.createMap();
+            map.putString("message", "未初始化SDK");
+            map.putString("code", Integer.toString(0));
+            p.resolve(map);
+            return;
+        }
+        String url = data.getString("url");
+
+        mKelperTask = KeplerApiManager.getWebViewService()
+                .openAppWebViewPageJXLite(reactContext, url, mKeplerAttachParameter,
+                        new OpenAppAction() {
+                            @Override
+                            public void onStatus(final int status, final String url) {
+                                WritableMap map = Arguments.createMap();
+                                map.putString("code", Integer.toString(status));
+                                if (status == OpenAppAction.OpenAppAction_result_NoJDAPP) {
+                                    map.putString("message", url);
+                                } else if (status == OpenAppAction.OpenAppAction_result_BlackUrl) {
+                                    map.putString("message", url);
+                                } else if (status == OpenAppAction.OpenAppAction_result_ErrorScheme) {
+                                    map.putString("message", url);
+                                } else if (status == OpenAppAction.OpenAppAction_result_JXLITE) {
+                                    //成功唤醒app
+                                } else if (status == OpenAppAction.OpenAppAction_result_uawakeId_empty) {
+                                    map.putString("message", "缺少依赖文件，请检查libs文件夹中文件完整性，重新进行集成");
+                                } else if (status == OpenAppAction.OpenAppAction_result_NetError) {
+                                    map.putString("message", "网络异常，请检查网络连接是否开启");
+                                }
+                                p.resolve(map);
+                            };
+                        });
     }
 
     /**
@@ -115,7 +155,7 @@ public class RNReactNativeMjdunionModule extends ReactContextBaseJavaModule {
                             map.putString("message", url);
                         } else if (status == OpenAppAction.OpenAppAction_result_ErrorScheme) {
                             map.putString("message", url);
-                        } else if (status == OpenAppAction.OpenAppAction_result_APP) {
+                        } else if (status == OpenAppAction.OpenAppAction_result_JXAPP) {
                             //成功唤醒app
                         } else if (status == OpenAppAction.OpenAppAction_result_uawakeId_empty) {
                             map.putString("message", "缺少依赖文件，请检查libs文件夹中文件完整性，重新进行集成");
@@ -155,7 +195,7 @@ public class RNReactNativeMjdunionModule extends ReactContextBaseJavaModule {
                             map.putString("message", url);
                         } else if (status == OpenAppAction.OpenAppAction_result_ErrorScheme) {
                             map.putString("message", url);
-                        } else if (status == OpenAppAction.OpenAppAction_result_APP) {
+                        } else if (status == OpenAppAction.OpenAppAction_result_JDAPP) {
                             //成功唤醒app
                         } else if (status == OpenAppAction.OpenAppAction_result_uawakeId_empty) {
                             map.putString("message", "缺少依赖文件，请检查libs文件夹中文件完整性，重新进行集成");

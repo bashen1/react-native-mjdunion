@@ -11,6 +11,10 @@ export async function showJXItemByUrl(params) {
     return await RNReactNativeMjdunion.showJXItemByUrl(params);
 }
 
+export async function showJXLiteItemByUrl(params) {
+    return await RNReactNativeMjdunion.showJXLiteItemByUrl(params);
+}
+
 export async function showItemByUrl(params) {
     return await RNReactNativeMjdunion.showItemByUrl(params);
 }

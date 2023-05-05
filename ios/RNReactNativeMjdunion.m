@@ -85,7 +85,7 @@ RCT_EXPORT_METHOD(initSDK: (NSDictionary *)param resolve: (RCTPromiseResolveBloc
             self->initKepler_success = 1;
             resolve(ret);
         }failedCallback:^(NSError *error){
-            NSDictionary *ret = @{@"code": @(error.code), @"message":error.description};
+            NSDictionary *ret = @{@"code": @"1", @"message":error.description};
             resolve(ret);
         }];
     }else{
@@ -113,7 +113,7 @@ RCT_EXPORT_METHOD(showItemByUrl: (NSDictionary *)param resolve: (RCTPromiseResol
     }];
 }
 
-//通过url打开商品
+//通过url打开京喜商品
 RCT_EXPORT_METHOD(showJXItemByUrl: (NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if(initKepler_success != 1){
         NSDictionary *ret = @{@"code": @"0", @"message":@"未初始化SDK"};
@@ -125,6 +125,25 @@ RCT_EXPORT_METHOD(showJXItemByUrl: (NSDictionary *)param resolve: (RCTPromiseRes
     NSString *url = (NSString *)param[@"url"];
 
     [[KeplerApiManager sharedKPService] openJXPageWithUrl:url userInfo:customParams success:^{
+
+    } failure:^(NSInteger code, NSString * _Nonnull url) {
+        NSDictionary *ret = @{@"code": @(code), @"message":url};
+        resolve(ret);
+    }];
+}
+
+//通过url打开京喜特价商品
+RCT_EXPORT_METHOD(showJXLiteItemByUrl: (NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    if(initKepler_success != 1){
+        NSDictionary *ret = @{@"code": @"0", @"message":@"未初始化SDK"};
+        resolve(ret);
+        return;
+    }
+    NSDictionary* result = [self dealParam: param];
+    NSDictionary *customParams = result[@"customParams"];
+    NSString *url = (NSString *)param[@"url"];
+
+    [[KeplerApiManager sharedKPService] openJXLitePageWithUrl:url userInfo:customParams success:^{
 
     } failure:^(NSInteger code, NSString * _Nonnull url) {
         NSDictionary *ret = @{@"code": @(code), @"message":url};
