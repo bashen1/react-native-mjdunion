@@ -35,5 +35,5 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation files('libs/JDSDK_union_3.2.0_20210910.jar')
+    implementation files('libs/JDUnionSDK_3.5.0_20230410.jar')
 }
