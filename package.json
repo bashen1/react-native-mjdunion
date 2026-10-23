@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-mjdunion",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "summary": "-",
   "description": "react-native library for JD Union",
   "main": "index.js",
