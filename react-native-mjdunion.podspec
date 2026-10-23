@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.resources     = ['*.bundle', '*.strings']
   s.requires_arc  = true
 
-  s.vendored_frameworks = "ios/KeplerSDK/*"
+  s.vendored_frameworks = "ios/KeplerSDK/*.xcframework"
 
   s.dependency "React-Core"
 

@@ -8,13 +8,21 @@
 		<data>
 		tK+/oXRJbwZMpTBOGmDSMJ1dzWA=
 		</data>
+		<key>Headers/JDUnionWebTools.h</key>
+		<data>
+		mToi417E4wHQKsD8TIBN5CRBAvA=
+		</data>
 		<key>Headers/KeplerApiManager.h</key>
 		<data>
 		6z7CV3j5tHMF4DW59Rz84+lfDEQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		tKQUSZtZDkhvZzhLdVSHaZvFmJ0=
+		KENXDS5RDr0HhZdk2UQVrFl+0Vk=
+		</data>
+		<key>JDUnionSource.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		BhFI/UPcT09r8+tU/8Uqsl6KxWA=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -30,6 +38,17 @@
 			n74u1y1KFbi4kGDPTaesXnRlcXSNhvdCVs7og8rUXqw=
 			</data>
 		</dict>
+		<key>Headers/JDUnionWebTools.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mToi417E4wHQKsD8TIBN5CRBAvA=
+			</data>
+			<key>hash2</key>
+			<data>
+			8ZXpLJRaVpIwZkGYtGgI0EpK6p62xsDYBaJ7kYK3vj8=
+			</data>
+		</dict>
 		<key>Headers/KeplerApiManager.h</key>
 		<dict>
 			<key>hash</key>
@@ -39,6 +58,17 @@
 			<key>hash2</key>
 			<data>
 			wWn1fdIaLo3x6Czo33o4eLQ9ve7TO8viWvLddDsCYfU=
+			</data>
+		</dict>
+		<key>JDUnionSource.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BhFI/UPcT09r8+tU/8Uqsl6KxWA=
+			</data>
+			<key>hash2</key>
+			<data>
+			bjyLioqhUYauG9CriKt9NToAcgwELONyV3Ubd8emsfY=
 			</data>
 		</dict>
 	</dict>

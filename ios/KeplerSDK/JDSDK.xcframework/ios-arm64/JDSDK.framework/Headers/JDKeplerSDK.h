@@ -16,5 +16,3 @@ FOUNDATION_EXPORT double JDKeplerSDKVersionNumber;
 FOUNDATION_EXPORT const unsigned char JDKeplerSDKVersionString[];
 
 
-/* Release */
-/* 3.5.0-20230407 */
