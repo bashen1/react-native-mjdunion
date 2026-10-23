@@ -4,9 +4,9 @@
 
 京东联盟SDK
 
-iOS Version: 3.5.0
+iOS Version: 3.6.1
 
-Android Version: 3.5.0
+Android Version: 3.6.1
 
 ## 开始
 
